@@ -1,0 +1,13 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <entity name="App\Entity\User\Model\User">
+        <id name="id" type="integer">
+            <generator/>
+        </id>
+        <field name="name" length="50"/>
+        <field name="balance" type="integer"/>
+        <field name="mod" type="integer"/>
+        <unique-constraints>
+            <unique-constraint columns="name"/>
+        </unique-constraints>
+    </entity>
+</doctrine-mapping>
