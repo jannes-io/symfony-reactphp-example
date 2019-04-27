@@ -4,10 +4,6 @@
             <generator/>
         </id>
         <field name="name" length="50"/>
-        <field name="balance" type="integer"/>
-        <field name="mod" type="integer"/>
-        <unique-constraints>
-            <unique-constraint columns="name"/>
-        </unique-constraints>
+        <field name="lastname" length="50"/>
     </entity>
 </doctrine-mapping>

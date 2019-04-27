@@ -15,7 +15,7 @@ use App\Entity\User\Model\User;
  * Class UserRepository
  * @package App\Entity\User\Repository
  */
-class UserRepository extends AbstractRepository
+final class UserRepository extends AbstractRepository
 {
     protected const ENTITY = User::class;
 

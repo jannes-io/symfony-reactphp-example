@@ -14,7 +14,7 @@ use App\Entity\User\Model\User;
  * Class UserTransformer
  * @package App\Entity\User\Transformer
  */
-class UserTransformer
+final class UserTransformer
 {
     /**
      * @param User $user
@@ -25,7 +25,7 @@ class UserTransformer
         return [
             'id' => $user->getId(),
             'name' => $user->getName(),
-            'balance' => $user->getBalance()
+            'lastname' => $user->getLastname()
         ];
     }
 }

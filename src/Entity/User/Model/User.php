@@ -23,22 +23,15 @@ class User
      * @var string
      */
     private $name;
-
     /**
-     * @var int int
+     * @var string
      */
-    private $balance;
+    private $lastname;
 
-    /**
-     * @var int
-     */
-    private $mod;
-
-    public function __construct($name, $balance = 0, $mod = 1)
+    public function __construct(string $name, string $lastname)
     {
         $this->name = $name;
-        $this->balance = $balance;
-        $this->mod = $mod;
+        $this->lastname = $lastname;
     }
 
     /**
@@ -58,22 +51,6 @@ class User
     }
 
     /**
-     * @return int
-     */
-    public function getBalance(): int
-    {
-        return $this->balance;
-    }
-
-    /**
-     * @return int
-     */
-    public function getMod(): int
-    {
-        return $this->mod;
-    }
-
-    /**
      * @param string $name
      */
     public function setName(string $name): void
@@ -82,18 +59,18 @@ class User
     }
 
     /**
-     * @param int $balance
+     * @return string
      */
-    public function setBalance(int $balance): void
+    public function getLastname(): string
     {
-        $this->balance = $balance;
+        return $this->lastname;
     }
 
     /**
-     * @param int $mod
+     * @param string $lastname
      */
-    public function setMod(int $mod): void
+    public function setLastname(string $lastname): void
     {
-        $this->mod = $mod;
+        $this->lastname = $lastname;
     }
 }

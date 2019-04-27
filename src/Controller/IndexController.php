@@ -11,6 +11,10 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Class IndexController
+ * @package App\Controller
+ */
 final class IndexController
 {
     /**
@@ -19,6 +23,6 @@ final class IndexController
      */
     public function index(): Response
     {
-        return new Response('lewd-money backend');
+        return new Response('ReactCommand PHP REST api test');
     }
 }
