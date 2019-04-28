@@ -9,9 +9,11 @@ Run the following command to run your ReactPHP server:
 $ php bin/console react:run
 ```
 
-Your ReactPHP server will launch on port 8080, to run on a different port specify the port as an argument
+Your ReactPHP server will launch on port 8080, to run on a different host specify the host uri as an argument.
+Examples:
 ```console
 $ php bin/console react:run 80
+$ php bin/console react:run 0.0.0.0:8080     # Example for Docker
 ```
 
 Usage in your own project

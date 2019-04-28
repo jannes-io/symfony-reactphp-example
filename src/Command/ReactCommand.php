@@ -34,8 +34,13 @@ final class ReactCommand extends Command
     protected function configure(): void
     {
         $this->setDescription('Runs Symfony using ReactPHP');
-        $this->addArgument('port', InputArgument::OPTIONAL, 'Tells ReactPHP on which port to run.', 8080);
-        $this->setHelp('Runs a ReactPHP HTTP server on port 8080 by default.');
+        $this->addArgument(
+            'listen',
+            InputArgument::OPTIONAL,
+            "Tells ReactPHP on which uri to run. Ex.: 0.0.0.0:8080, 80.\nIf no host is given, 127.0.0.1 is used.",
+            8080
+        );
+        $this->setHelp('Runs a ReactPHP HTTP server on localhost:8080 by default.');
     }
 
     /**
@@ -49,7 +54,7 @@ final class ReactCommand extends Command
             if (!class_exists(Dotenv::class)) {
                 throw new \RuntimeException('APP_ENV environment variable is not defined. You need to define environment variables for configuration or add "symfony/dotenv" as a Composer dependency to load variables from a .env file.');
             }
-            (new Dotenv())->load(__DIR__ . '/../.env');
+            (new Dotenv())->load(__DIR__ . '/../../.env');
         }
 
         $env = $_SERVER['APP_ENV'] ?? 'prod';
@@ -66,12 +71,15 @@ final class ReactCommand extends Command
         );
 
         $server = new Server($callback);
-        $port = $input->getArgument('port') ?? 8080;
+        $port = $input->getArgument('listen') ?? 8080;
+        if (strpos($port, ':') === false) {
+            $port = '127.0.0.1:' . $port;
+        }
 
         $loop = Factory::create();
         $socket = new ReactServer($port, $loop);
         $server->listen($socket);
-        $output->writeln('ReactPHP listening on localhost:' . $port);
+        $output->writeln("ReactPHP listening on $port");
         $loop->run();
     }
 
